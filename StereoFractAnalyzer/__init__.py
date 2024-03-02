@@ -1,5 +1,6 @@
 from .StereoFractAnalyzer import StereoFractAnalyzer
 import argparse
+
 def main():
     parser = argparse.ArgumentParser(description='Calculate the fractal dimension of a 3D surface or a 2D image.')
     parser.add_argument('--stl', type=str, help='Path to the STL file')

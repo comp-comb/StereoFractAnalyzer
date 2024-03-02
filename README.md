@@ -73,7 +73,7 @@ StereoFractAnalyzer's CLI allows for direct terminal-based operations for both 3
 Analyze a 3D model from an STL file:
 
 ```
-python -m StereoFractAnalyzer --stl path/to/your/model.stl
+StereoFractAnalyzer --stl path/to/your/model.stl
 ```
 
 ### 2D Image Analysis
@@ -81,7 +81,7 @@ python -m StereoFractAnalyzer --stl path/to/your/model.stl
 Calculate the fractal dimension of a 2D binary image:
 
 ```
-python -m StereoFractAnalyzer --img path/to/your/image.png
+StereoFractAnalyzer --img path/to/your/image.png
 ```
 
 ### Combined Analysis
@@ -89,7 +89,7 @@ python -m StereoFractAnalyzer --img path/to/your/image.png
 Conduct analyses on both a 3D model and a 2D image in one command:
 
 ```
-python -m StereoFractAnalyzer --stl path/to/your/model.stl --img path/to/your/image.png
+StereoFractAnalyzer --stl path/to/your/model.stl --img path/to/your/image.png
 ```
 
 ### Help and Options
@@ -97,7 +97,7 @@ python -m StereoFractAnalyzer --stl path/to/your/model.stl --img path/to/your/im
 For a detailed list of options and help:
 
 ```
-python -m StereoFractAnalyzer --help
+StereoFractAnalyzer --help
 ```
 
 This displays all command-line options available, providing guidance on how to use the CLI effectively.
