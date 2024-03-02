@@ -10,6 +10,9 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/kmmukut/StereoFractAnalyzer.git',
     license='MIT',
+    entry_points={
+    'console_scripts': ['StereFractAnalyzer = StereFractAnalyzer.StereFractAnalyzer:main'],
+    },
     packages=find_packages(),
     install_requires=[
         'open3d',
