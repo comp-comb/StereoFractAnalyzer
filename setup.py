@@ -11,7 +11,7 @@ setup(
     url='https://github.com/kmmukut/StereoFractAnalyzer.git',
     license='MIT',
     entry_points={
-    'console_scripts': ['StereFractAnalyzer = StereFractAnalyzer.StereFractAnalyzer:main'],
+    'console_scripts': ['StereoFractAnalyzer = StereoFractAnalyzer.StereoFractAnalyzer:main'],
     },
     packages=find_packages(),
     install_requires=[
