@@ -1,3 +1,5 @@
+![logo](logo.png)
+
 [![StereoFractAnalyzer](https://github.com/kmmukut/StereoFractAnalyzer/actions/workflows/StereoFractAnalyzer.yml/badge.svg)](https://github.com/kmmukut/StereoFractAnalyzer/actions/workflows/StereoFractAnalyzer.yml)
 [![PyPI version](https://badge.fury.io/py/StereoFractAnalyzer.svg)](https://badge.fury.io/py/StereoFractAnalyzer)
 
@@ -6,6 +8,8 @@
 
 ![License MIT](https://img.shields.io/badge/license-MIT-green])
 [![HitCount](https://hits.dwyl.com/kmmukut/StereoFractAnalyzer.svg?style=flat&show=unique)](http://hits.dwyl.com/kmmukut/StereoFractAnalyzer)
+
+
 
 
 ---
