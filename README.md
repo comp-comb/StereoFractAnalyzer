@@ -1,4 +1,4 @@
-
+[![StereoFractAnalyzer](https://github.com/kmmukut/StereoFractAnalyzer/actions/workflows/StereoFractAnalyzer.yml/badge.svg)](https://github.com/kmmukut/StereoFractAnalyzer/actions/workflows/StereoFractAnalyzer.yml)
 
 ---
 
