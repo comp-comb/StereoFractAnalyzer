@@ -3,6 +3,8 @@
 [![StereoFractAnalyzer](https://github.com/kmmukut/StereoFractAnalyzer/actions/workflows/StereoFractAnalyzer.yml/badge.svg)](https://github.com/kmmukut/StereoFractAnalyzer/actions/workflows/StereoFractAnalyzer.yml)
 [![PyPI version](https://badge.fury.io/py/StereoFractAnalyzer.svg)](https://badge.fury.io/py/StereoFractAnalyzer)
 
+[![Deploy static content to Pages](https://github.com/kmmukut/StereoFractAnalyzer/actions/workflows/static.yml/badge.svg)](https://github.com/kmmukut/StereoFractAnalyzer/actions/workflows/static.yml)
+
 ![Version 1.0.0](https://img.shields.io/badge/version-1.0.0-brightgreen)
 ![Coverage 100%](https://img.shields.io/badge/coverage-100%25-brightgreen) 
 ![License MIT](https://img.shields.io/badge/license-MIT-green])
