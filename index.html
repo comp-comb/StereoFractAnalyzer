@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StereoFractAnalyzer Wiki</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1, h2 { color: #333; }
+        .function { margin-top: 20px; }
+        .example { background-color: #f9f9f9; padding: 10px; margin-top: 10px; }
+        code { background: #eee; display: block; padding: 5px; }
+    </style>
+</head>
+<body>
+
+<h1>StereoFractAnalyzer Function Reference</h1>
+
+<section class="function">
+    <h2>__init__(self, stl_path=None, img_path=None)</h2>
+    <p>Initializes a StereoFractAnalyzer instance with optional paths to an STL file and an image file.</p>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><strong>stl_path</strong> (str, optional): Path to the STL file.</li>
+        <li><strong>img_path</strong> (str, optional): Path to the image file.</li>
+    </ul>
+    <h3>Example:</h3>
+    <div class="example">
+        <code>
+        # Initialize without any paths<br>
+        analyzer = StereoFractAnalyzer()<br>
+        <br>
+        # Initialize with an STL path<br>
+        analyzer = StereoFractAnalyzer(stl_path="path/to/model.stl")
+        </code>
+    </div>
+</section>
+
+<section class="function">
+    <h2>transform(self, translation=(0,0,0), rotation=(0,0,0), scale=1.0)</h2>
+    <p>Applies geometric transformations to the loaded 3D mesh. This includes translation, rotation, and scaling.</p>
+    <h3>Parameters:</h3>
+    <ul>
+        <li><strong>translation</strong> (tuple of float, optional): Specifies the translation vector as (x, y, z).</li>
+        <li><strong>rotation</strong> (tuple of float, optional): Specifies the rotation angles in radians for the x, y, and z axes.</li>
+        <li><strong>scale</strong> (float, optional): Specifies the scaling factor to be applied to the mesh.</li>
+    </ul>
+    <h3>Example:</h3>
+    <div class="example">
+        <code>
+        # Translate by (10, 0, 0), rotate by π/4 radians around the Z-axis, and scale by 2<br>
+        analyzer.transform(translation=(10, 0, 0), rotation=(0, 0, np.pi/4), scale=2)
+        </code>
+    </div>
+</section>
+
+
+<div class="function-section" id="3d-mesh-analysis">
+    <h2>3D Mesh Analysis</h2>
+    
+    <!-- transform function -->
+    <h3>transform</h3>
+    <p>Applies geometric transformations to the 3D mesh, including translation, rotation, and scaling.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>translation</code> (tuple of float): Specifies the translation vector as (x, y, z).</li>
+        <li><code>rotation</code> (tuple of float): Specifies the rotation angles in radians for each of the x, y, and z axes, respectively.</li>
+        <li><code>scale</code> (float): Specifies the scaling factor to be applied to the mesh.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <code>
+        # Translate by (10, 5, 0), rotate by 45 degrees around the Z-axis, and scale by 2.0<br>
+        transformed_mesh = analyzer.transform(translation=(10, 5, 0), rotation=(0, 0, np.pi/4), scale=2.0)
+    </code>
+    
+    <!-- get_voxel function -->
+    <h3>get_voxel</h3>
+    <p>Converts the 3D mesh into a voxel grid representation, enabling volumetric analysis of the structure.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>size</code> (int or float, optional): The edge length of each cubic voxel in the grid. Default is 1.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <code>
+        # Generate a voxel grid with voxel size 0.5<br>
+        voxel_grid = analyzer.get_voxel(size=0.5)
+    </code>
+    
+    <!-- view function -->
+    <h3>view</h3>
+    <p>Visualizes the 3D mesh or a point cloud representation of the mesh associated with the StereoFractAnalyzer instance.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>point_cloud_data</code> (int, optional): The number of points to sample for creating a point cloud representation. Default is 0 (visualize the original mesh).</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <code>
+        # Visualize the original 3D mesh<br>
+        analyzer.view()<br>
+        # Visualize a point cloud sampled from the mesh with 1000 points<br>
+        analyzer.view(point_cloud_data=1000)
+    </code>
+</div>
+
+<!-- 2D Image Analysis -->
+<div class="function-section" id="2d-image-analysis">
+    <h2>2D Image Analysis</h2>
+    
+    <!-- box_count_image function -->
+    <h3>box_count_image</h3>
+    <p>Calculates the box counts for a binary image to estimate its fractal dimension using the box counting method. This method is applicable for analyzing the complexity of patterns within the image.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>img</code> (PIL.Image.Image): The binary image to be analyzed.</li>
+        <li><code>min_size</code> (int, optional): The minimum box size to use in the analysis. Default is 1 pixel.</li>
+        <li><code>max_size</code> (int, optional): The maximum box size to use in the analysis. If not specified, it defaults to half of the smallest image dimension.</li>
+        <li><code>n_sizes</code> (int, optional): The number of different box sizes to use, distributed logarithmically between min_size and max_size. Default is 10.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <code>
+        # Analyze a binary image for fractal dimension<br>
+        img = Image.open("path/to/binary_image.png")<br>
+        sizes, counts = analyzer.box_count_image(img, min_size=1, max_size=100, n_sizes=10)<br>
+        print(sizes, counts)
+    </code>
+    
+    <!-- get_image_fractal_dimension function -->
+    <h3>get_image_fractal_dimension</h3>
+    <p>Calculates and optionally plots the fractal dimension of a 2D image using the box counting method.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>img_path</code> (str or int, optional): Path to the binary image file. Default is 0 (use image path provided during initialization).</li>
+        <li><code>plot</code> (int, optional): If set to 1, the method generates a log-log plot of the box counting analysis. Default is 1.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <code>
+        # Calculate and plot the fractal dimension of an image<br>
+        fractal_dimension = analyzer.get_image_fractal_dimension("path/to/image.png", plot=1)<br>
+        print("The fractal dimension is:", fractal_dimension)
+    </code>
+</div>
+
+<!-- Utility Methods -->
+<div class="function-section" id="utility-methods">
+    <h2>Utility Methods</h2>
+    
+    <!-- calculate_intersection_point function -->
+    <h3>calculate_intersection_point</h3>
+    <p>Calculates the intersection point between a line segment and a horizontal plane at a given z-height, useful for slicing operations or analyzing spatial relationships within the 3D space.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>p1</code> (tuple or list): The (x, y, z) coordinates of the first point defining the line segment.</li>
+        <li><code>p2</code> (tuple or list): The (x, y, z) coordinates of the second point defining the line segment.</li>
+        <li><code>z_height</code> (float): The z-coordinate of the horizontal plane with which the intersection is calculated.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <code>
+        # Calculate intersection point of a line with a plane at z-height = 4<br>
+        p1 = (1, 2, 3)<br>
+        p2 = (1, 2, 5)<br>
+        z_height = 4<br>
+        intersection_point = analyzer.calculate_intersection_point(p1, p2, z_height)<br>
+        print(intersection_point)
+    </code>
+
+    <!-- Continued from calculate_intersection_point function -->
+
+    <!-- calculate_slice function -->
+    <h3>calculate_slice</h3>
+    <p>Computes the intersection lines between the mesh and a horizontal plane at the given z-height, useful for generating cross-sections of the mesh.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>MESH</code> (open3d.geometry.TriangleMesh): The 3D mesh from which the slice is to be calculated.</li>
+        <li><code>z_height</code> (float): The z-coordinate of the horizontal plane used to slice the mesh.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <code>
+        # Calculate a horizontal slice of the mesh at z-height = 5<br>
+        slice_lines = analyzer.calculate_slice(analyzer.STL, 5)<br>
+        print(slice_lines)
+    </code>
+
+    <!-- box_counting function -->
+    <h3>box_counting</h3>
+    <p>Estimates the fractal dimension of a dataset using the box counting method, applicable to both 3D surfaces and 2D projections.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>points</code> (numpy.ndarray): An array of points representing the dataset.</li>
+        <li><code>min_box_size</code> (float): The size of the smallest box to use in the analysis.</li>
+        <li><code>max_box_size</code> (float): The size of the largest box to use in the analysis.</li>
+        <li><code>steps</code> (int): The number of steps between the smallest and largest box sizes, determining the granularity of the analysis.</li>
+        <li><code>plot</code> (int, optional): If set to 1, a log-log plot of the box size versus the number of boxes is generated. Default is 0.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <code>
+        # Estimate fractal dimension of a set of 3D points<br>
+        points = np.random.rand(1000, 3)  # Generate some random points<br>
+        D, sizes, counts = analyzer.box_counting(points, 0.01, 1.0, 10, plot=1)<br>
+        print(f"Estimated fractal dimension: {D}")
+    </code>
+</div>
+
+    <!-- Continued Utility Methods -->
+
+    <!-- calculate_slice function -->
+    <h3>calculate_slice</h3>
+    <p>Computes a horizontal slice of the 3D mesh at a specified z-height, useful for analyzing cross-sections of the mesh for further analysis.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>MESH</code> (open3d.geometry.TriangleMesh): The 3D mesh from which the slice is to be calculated.</li>
+        <li><code>z_height</code> (float): The z-coordinate of the horizontal plane used to slice the mesh.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <code>
+        # Calculate a horizontal slice of the mesh at z-height = 5<br>
+        slice_lines = analyzer.calculate_slice(analyzer.STL, 5)<br>
+        print(slice_lines)
+    </code>
+    
+    <!-- box_counting function -->
+    <h3>box_counting</h3>
+    <p>Estimates the fractal dimension of a dataset using the box counting method, a key technique in fractal geometry.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>points</code> (numpy.ndarray): An array of points representing the dataset.</li>
+        <li><code>min_box_size</code> (float): The size of the smallest box to use in the analysis.</li>
+        <li><code>max_box_size</code> (float): The size of the largest box to use in the analysis.</li>
+        <li><code>steps</code> (int): The number of steps between the smallest and largest box sizes.</li>
+        <li><code>plot</code> (int, optional): If set to 1, a log-log plot of the box size versus the number of boxes is generated.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <code>
+        # Generate some random points and calculate the fractal dimension<br>
+        points = np.random.rand(1000, 3)  # Example points<br>
+        D, sizes, counts = analyzer.box_counting(points, 0.01, 1.0, 10, plot=1)<br>
+        print(f"Estimated fractal dimension: {D}")
+    </code>
+    
+    <!-- draw_contours function -->
+    <h3>draw_contours</h3>
+    <p>Draws the contours of the 3D mesh at different z-heights, which can be crucial for visualizing the shape and features of the mesh across different layers.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>zmin</code> (int or float): The minimum z-height at which to start slicing the mesh.</li>
+        <li><code>zmax</code> (int or float): The maximum z-height at which to end slicing the mesh.</li>
+        <li><code>step</code> (int or float): The interval between successive z-heights.</li>
+        <li><code>save</code> (int, optional): If set to 1, saves each contour plot as an image file.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <code>
+        # Draw and optionally save contour plots for the mesh sliced at specified z-heights<br>
+        analyzer.draw_contours(zmin=0, zmax=20, step=2, save=1)
+    </code>
+
+
+
+    <!-- Continued Utility Methods -->
+
+    <!-- get_contour_fractal_dimension function -->
+    <h3>get_contour_fractal_dimension</h3>
+    <p>Calculates the fractal dimension of a contour slice at a specified z-height within the 3D mesh, providing a quantitative measure of the complexity or roughness of the contour line.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>z_height</code> (float): The z-coordinate of the horizontal plane used to slice the mesh and calculate the fractal dimension.</li>
+        <li><code>plot</code> (int, optional): If set to 1, a log-log plot of the box size versus the number of boxes is generated for visual inspection. Default is 0.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <code>
+        # Calculate the fractal dimension of a contour at z-height 5.0<br>
+        fractal_dimension = analyzer.get_contour_fractal_dimension(5.0, plot=1)<br>
+        print(f"Fractal dimension of the contour at z=5.0: {fractal_dimension}")
+    </code>
+
+    <!-- get_surface_fractal_dimension function -->
+    <h3>get_surface_fractal_dimension</h3>
+    <p>Calculates the fractal dimension of the surface of the 3D mesh by analyzing the complexity of its contour slices at different z-heights, providing a measure of the surface's overall complexity or roughness.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><code>increment</code> (int or float, optional): The interval between successive z-heights for slicing the mesh. Default is 1.</li>
+        <li><code>plot</code> (int, optional): If set to 1, generates a plot for each contour's fractal dimension calculation. Default is 0.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <code>
+        # Calculate the surface fractal dimension of the mesh<br>
+        surface_fractal_dimension = analyzer.get_surface_fractal_dimension(increment=0.5, plot=1)<br>
+        print(f"Surface fractal dimension: {surface_fractal_dimension}")
+    </code>
+
+    <!-- calculate_fractal_dimension function -->
+    <h3>calculate_fractal_dimension</h3>
+    <p>A comprehensive test method to verify the basic functionalities of the StereoFractAnalyzer class related to fractal dimension calculation, including loading meshes and images, transforming geometries, and analyzing fractal dimensions.</p>
+    <p><strong>Usage:</strong> This method does not require specific parameters for invocation and is designed for testing and demonstration purposes.</p>
+    <p><strong>Example:</strong></p>
+    <code>
+        # Perform a comprehensive test to verify fractal dimension calculation functionalities<br>
+        fractal_dimension = analyzer.calculate_fractal_dimension()<br>
+        print("Calculated fractal dimension:", fractal_dimension)
+    </code>
+
+
+<!-- Closing and Additional Information -->
+<div>
+    <h2>Contributing</h2>
+    <p>Contributions to StereoFractAnalyzer are welcome! Please refer to the project's repository for contributing guidelines.</p>
+
+    <h2>License</h2>
+    <p>StereoFractAnalyzer is licensed under the MIT License. See the LICENSE file in the project repository for full details.</p>
+
+    <h2>Contact</h2>
+    <p>For support or to provide feedback, please contact the package maintainer at <a href = "mailto: kmmukut@gmail.com">kmmukut@gmail.com</a>.</p>
+</div>
+</body>
+</html>
