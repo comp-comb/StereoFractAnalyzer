@@ -16,6 +16,8 @@
 
 # StereoFractAnalyzer
 
+Documentation is available at : https://kmmukut.github.io/StereoFractAnalyzer/
+
 StereoFractAnalyzer is a Python package designed for analyzing the fractal dimension of 3D surfaces and 2D images. It finds applications across various fields such as material science, geology, and computer graphics. Utilizing the capabilities of Open3D, NumPy, Matplotlib, and PIL, it offers a robust suite of tools for comprehensive fractal geometry analysis.
 
 ## Features
