@@ -1,4 +1,5 @@
 
+<img align='left' src='https://github.com/kmmukut/StereoFractAnalyzer/assets/32664955/f16ce153-846b-4b9e-8fce-3ecd1809c17a' width = "200" height = "200"> 
 
 [![StereoFractAnalyzer](https://github.com/kmmukut/StereoFractAnalyzer/actions/workflows/StereoFractAnalyzer.yml/badge.svg)](https://github.com/kmmukut/StereoFractAnalyzer/actions/workflows/StereoFractAnalyzer.yml)
 [![PyPI version](https://badge.fury.io/py/StereoFractAnalyzer.svg)](https://badge.fury.io/py/StereoFractAnalyzer)
@@ -14,8 +15,7 @@ Documentation is available at : https://kmmukut.github.io/StereoFractAnalyzer/
 ---
 
 <!-- ![logo](https://github.com/kmmukut/StereoFractAnalyzer/assets/32664955/165e9dfb-5fd1-438d-863a-71e0158bcccd) -->
-![logo2](https://github.com/kmmukut/StereoFractAnalyzer/assets/32664955/f16ce153-846b-4b9e-8fce-3ecd1809c17a)
-
+<!-- ![logo2](https://github.com/kmmukut/StereoFractAnalyzer/assets/32664955/f16ce153-846b-4b9e-8fce-3ecd1809c17a) -->
 
 # StereoFractAnalyzer
 
