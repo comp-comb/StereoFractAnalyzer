@@ -11,7 +11,7 @@
 ![License MIT](https://img.shields.io/badge/license-MIT-green])
 [![HitCount](https://hits.dwyl.com/comp-comb/StereoFractAnalyzer.svg?style=flat-square&show=unique)](http://hits.dwyl.com/comp-comb/StereoFractAnalyzer)
 
-Documentation is available at : [https://kmmukut.github.io/StereoFractAnalyzer/](https://comp-comb.github.io/StereoFractAnalyzer/)
+Documentation is available at : [https://comp-comb.github.io/StereoFractAnalyzer/](https://comp-comb.github.io/StereoFractAnalyzer/)
 ---
 
 <!-- ![logo](https://github.com/kmmukut/StereoFractAnalyzer/assets/32664955/165e9dfb-5fd1-438d-863a-71e0158bcccd) -->
