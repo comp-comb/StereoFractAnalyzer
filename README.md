@@ -127,6 +127,5 @@ Contributions are welcome! If you have suggestions for improvements or bug fixes
 
 StereoFractAnalyzer is open-source software licensed under the MIT License. See the LICENSE file for more details.
 
----
 ## Acknowledgment
 This material is based upon work supported by the National Science Foundation under Grant No. 2144290. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
